@@ -39,6 +39,8 @@ class HalfCheetahTaskEnv(HalfCheetahEnv):
     def step(self, action):
         """
         Same as HalfCheetahEnv except run_cost is |actual - target| rather than actual.
+        Cross-reference with Chelsea's implementation, in particular run_cost computation:
+        https://github.com/cbfinn/maml_rl/blob/master/rllab/envs/mujoco/half_cheetah_env_rand.py#L62
         """
         self.forward_dynamics(action)
         next_obs = self.get_current_obs()

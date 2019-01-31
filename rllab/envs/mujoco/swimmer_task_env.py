@@ -37,6 +37,8 @@ class SwimmerTaskEnv(SwimmerEnv):
     def step(self, action):
         """
         Same as SwimmerEnv except run_cost is |actual - target| rather than actual.
+        Cross-reference with Chelsea's implementation, in particular forward_reward computation:
+        https://github.com/cbfinn/maml_rl/blob/master/rllab/envs/mujoco/swimmer_randgoal_env.py#L52
         """
         self.forward_dynamics(action)
         next_obs = self.get_current_obs()
@@ -44,7 +46,7 @@ class SwimmerTaskEnv(SwimmerEnv):
         scaling = (ub - lb) * 0.5
         ctrl_cost = 0.5 * self.ctrl_cost_coeff * np.sum(
             np.square(action / scaling))
-        forward_reward = - 1. * np.abs(self.get_body_comvel("torso")[0] - self._task_config.goal_velocity)
+        forward_reward = -1.5 * np.abs(self.get_body_comvel("torso")[0] - self._task_config.goal_velocity)
         reward = forward_reward - ctrl_cost
         done = False
         return Step(next_obs, reward, done)

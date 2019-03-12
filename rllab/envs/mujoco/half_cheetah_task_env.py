@@ -12,7 +12,7 @@ class HalfCheetahTaskConfig(object):
         self.goal_velocity = 2.0
 
     def sample_goal_velocity(self) -> float:
-        return np.random.uniform(0.0, 2.0)
+        return np.random.uniform(-2.0, 2.0)
 
     def sample(self) -> None:
         self.goal_velocity = self.sample_goal_velocity()

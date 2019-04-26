@@ -32,7 +32,7 @@ class AntTaskEnv(AntEnv):
     _task_config: AntTaskConfig
 
     def __init__(self, *args, **kwargs):
-        if 'task_config' in kwargs['task_config']:
+        if 'task_config' in kwargs:
             self._task_config = kwargs["task_config"]
             del kwargs['task_config']
         else:

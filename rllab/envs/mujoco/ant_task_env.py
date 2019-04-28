@@ -21,8 +21,12 @@ class AntTaskConfig(object):
         self.goal_velocity = self.sample_goal_velocity()
 
     def __str__(self):
-        return f'Goal Velocity = {self.goal_velocity:.4f}'
-
+        if self.goal_velocity == -math.inf:
+            return 'Goal Velocity = BACKWARD (-inf)'
+        elif self.goal_velocity == math.inf:
+            return 'Goal Velocity = FORWARD (+inf)'
+        else:
+            return f'Goal Velocity = {self.goal_velocity:.4f}'
 class AntTaskEnv(AntEnv):
     """
         An ant environment with a configurable goal velocity.

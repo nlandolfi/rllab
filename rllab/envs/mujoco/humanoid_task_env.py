@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from .humanoid_env import HumanoidEnv
+from .simple_humanoid_env import SimpleHumanoidEnv
 from rllab.misc.overrides import overrides
 from rllab.envs.base import Step
 
@@ -24,7 +24,7 @@ class HumanoidTaskConfig(object):
         else:
             return f'Goal Velocity = {self.goal_velocity:.4f}'
 
-class HumanoidTaskEnv(HumanoidEnv):
+class HumanoidTaskEnv(SimpleHumanoidEnv):
     _task_config: HumanoidTaskConfig
 
     def __init__(self, *args, **kwargs):

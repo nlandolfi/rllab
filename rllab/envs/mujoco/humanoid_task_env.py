@@ -2,6 +2,7 @@ import math
 import numpy as np
 from .humanoid_env import HumanoidEnv
 from rllab.misc.overrides import overrides
+from rllab.envs.base import Step
 
 class HumanoidTaskConfig(object):
     goal_velocity: float

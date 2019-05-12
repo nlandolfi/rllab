@@ -52,7 +52,6 @@ class HumanoidTaskEnv(HumanoidEnv):
         else:
             lin_vel_reward = -np.abs(comvel[0] - self._task_config.goal_velocity)
 
-        lin_vel_reward = comvel[0]
         lb, ub = self.action_bounds
         scaling = (ub - lb) * 0.5
         ctrl_cost = .5 * self.ctrl_cost_coeff * np.sum(

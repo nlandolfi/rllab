@@ -1,5 +1,5 @@
 from .ant_task_env import AntTaskEnv
-
+import numpy as np
 
 class AntMissingLegTaskEnv(AntTaskEnv):
     def inject_action_noise(self, action):

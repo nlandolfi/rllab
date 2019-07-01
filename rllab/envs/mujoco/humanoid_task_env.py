@@ -51,7 +51,7 @@ class HumanoidTaskEnv(SimpleHumanoidEnv):
         elif self._task_config.goal_velocity == math.inf:
             lin_vel_reward = comvel[0]
         else:
-            lin_vel_reward = -np.abs(comvel[0] - self._task_config.goal_velocity)
+            lin_vel_reward = -np.abs(comvel[0] - self._task_config.goal_velocity) + 0.8
 
         lb, ub = self.action_bounds
         scaling = (ub - lb) * 0.5
